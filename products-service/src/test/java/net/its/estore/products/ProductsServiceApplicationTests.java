@@ -1,4 +1,4 @@
-package net.its.estore.productsservice;
+package net.its.estore.products;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
