@@ -1,10 +1,17 @@
 package net.its.estore.products.rest;
 
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/products")
 public class ProductsController {
+
+    private final Environment env;
+
+    public ProductsController(Environment env) {
+        this.env = env;
+    }
 
     @PostMapping
     public String createProduct() {
@@ -13,7 +20,7 @@ public class ProductsController {
 
     @GetMapping
     public String getProduct() {
-        return "HTTP GET is handled";
+        return "HTTP GET is handled " + env.getProperty("local.server.port");
     }
 
     @PutMapping
