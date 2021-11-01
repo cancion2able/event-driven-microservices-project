@@ -1,8 +1,9 @@
 package net.its.estore.products.command;
 
-import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.spring.stereotype.Aggregate;
+
+import java.math.BigDecimal;
 
 @Aggregate
 public class ProductAggregate {
@@ -12,6 +13,12 @@ public class ProductAggregate {
 
     @CommandHandler
     public ProductAggregate(CreateProductCommand createProductCommand) {
-
+        if (createProductCommand.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Price cannot be less than or equal to zero");
+        }
+        if (createProductCommand.getTitle() == null
+                || createProductCommand.getTitle().isBlank()) {
+            throw new IllegalArgumentException("Title cannot be empty");
+        }
     }
 }
