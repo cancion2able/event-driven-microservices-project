@@ -1,6 +1,7 @@
 package net.its.estore.products.rest;
 
 import net.its.estore.products.command.CreateProductCommand;
+import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +12,11 @@ import java.util.UUID;
 public class ProductsController {
 
     private final Environment env;
+    private final CommandGateway commandGateway;
 
-    public ProductsController(Environment env) {
+    public ProductsController(Environment env, CommandGateway commandGateway) {
         this.env = env;
+        this.commandGateway = commandGateway;
     }
 
     @PostMapping
@@ -24,7 +27,13 @@ public class ProductsController {
                 .title(createProductRestModel.getTitle())
                 .productId(UUID.randomUUID().toString())
                 .build();
-        return "HTTP POST is handled. " + createProductRestModel.getTitle();
+        String returnValue;
+        try {
+            returnValue = commandGateway.sendAndWait(createProductCommand);
+        } catch (Exception exception) {
+            returnValue = exception.getLocalizedMessage();
+        }
+        return returnValue;
     }
 
     @GetMapping
