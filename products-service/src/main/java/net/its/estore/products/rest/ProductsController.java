@@ -1,7 +1,10 @@
 package net.its.estore.products.rest;
 
+import net.its.estore.products.command.CreateProductCommand;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/products")
@@ -15,6 +18,12 @@ public class ProductsController {
 
     @PostMapping
     public String createProduct(@RequestBody CreateProductRestModel createProductRestModel) {
+        final CreateProductCommand createProductCommand = CreateProductCommand.builder()
+                .price(createProductRestModel.getPrice())
+                .quantity(createProductRestModel.getQuantity())
+                .title(createProductRestModel.getTitle())
+                .productId(UUID.randomUUID().toString())
+                .build();
         return "HTTP POST is handled. " + createProductRestModel.getTitle();
     }
 
