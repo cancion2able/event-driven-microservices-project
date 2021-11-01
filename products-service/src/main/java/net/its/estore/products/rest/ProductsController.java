@@ -14,7 +14,7 @@ public class ProductsController {
     }
 
     @PostMapping
-    public String createProduct(CreateProductRestModel createProductRestModel) {
+    public String createProduct(@RequestBody CreateProductRestModel createProductRestModel) {
         return "HTTP POST is handled. " + createProductRestModel.getTitle();
     }
 
