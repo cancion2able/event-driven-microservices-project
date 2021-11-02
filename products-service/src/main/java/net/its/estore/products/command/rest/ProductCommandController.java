@@ -9,12 +9,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/products")
-public class ProductsController {
+public class ProductCommandController {
 
     private final Environment env;
     private final CommandGateway commandGateway;
 
-    public ProductsController(Environment env, CommandGateway commandGateway) {
+    public ProductCommandController(Environment env, CommandGateway commandGateway) {
         this.env = env;
         this.commandGateway = commandGateway;
     }
