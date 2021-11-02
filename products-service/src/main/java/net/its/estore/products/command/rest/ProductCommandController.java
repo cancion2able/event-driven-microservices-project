@@ -36,21 +36,4 @@ public class ProductCommandController {
         return returnValue;
     }
 
-    @GetMapping
-    public String getProduct() {
-        return "HTTP GET is handled " + env.getProperty("local.server.port");
-    }
-
-    @PutMapping
-    public String updateProduct() {
-        return "Http PUT is endbled";
-    }
-
-    @DeleteMapping
-    public String deleteProduct() {
-        return "HTTP DELETE is handled";
-    }
-
-
-
 }
