@@ -14,7 +14,6 @@ import java.util.UUID;
 @RequestMapping("/products")
 public class ProductCommandController {
 
-    private final Environment env;
     private final CommandGateway commandGateway;
 
     @PostMapping
@@ -25,13 +24,7 @@ public class ProductCommandController {
                 .title(createProductRestModel.getTitle())
                 .productId(UUID.randomUUID().toString())
                 .build();
-        String returnValue;
-        try {
-            returnValue = commandGateway.sendAndWait(createProductCommand);
-        } catch (Exception exception) {
-            returnValue = exception.getLocalizedMessage();
-        }
-        return returnValue;
+        return commandGateway.sendAndWait(createProductCommand);
     }
 
 }
