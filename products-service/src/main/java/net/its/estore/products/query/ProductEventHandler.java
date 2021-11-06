@@ -1,5 +1,6 @@
 package net.its.estore.products.query;
 
+import lombok.RequiredArgsConstructor;
 import net.its.estore.products.core.data.ProductEntity;
 import net.its.estore.products.core.data.ProductRepository;
 import net.its.estore.products.core.event.ProductCreatedEvent;
@@ -9,14 +10,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 @ProcessingGroup("product-group")
 public class ProductEventHandler {
 
     private final ProductRepository repository;
-
-    public ProductEventHandler(ProductRepository repository) {
-        this.repository = repository;
-    }
 
     @EventHandler
     public void on(ProductCreatedEvent event) {

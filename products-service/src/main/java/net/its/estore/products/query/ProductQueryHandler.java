@@ -1,5 +1,6 @@
 package net.its.estore.products.query;
 
+import lombok.RequiredArgsConstructor;
 import net.its.estore.products.core.data.ProductEntity;
 import net.its.estore.products.core.data.ProductRepository;
 import net.its.estore.products.query.rest.ProductRestModel;
@@ -11,13 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class ProductQueryHandler {
 
     private final ProductRepository repository;
-
-    public ProductQueryHandler(ProductRepository repository) {
-        this.repository = repository;
-    }
 
     @QueryHandler
     public List<ProductRestModel> findProducts(FindProductsQuery findProductsQuery) {
