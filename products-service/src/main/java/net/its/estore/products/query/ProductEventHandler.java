@@ -18,8 +18,8 @@ public class ProductEventHandler {
     private final ProductRepository repository;
 
     @ExceptionHandler(resultType = Exception.class)
-    public void handle(Exception exception) {
-        // Log error message
+    public void handle(Exception exception) throws Exception {
+        throw exception;
     }
 
     @ExceptionHandler(resultType = IllegalArgumentException.class)
