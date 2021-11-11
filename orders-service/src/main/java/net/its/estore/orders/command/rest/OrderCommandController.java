@@ -2,7 +2,7 @@ package net.its.estore.orders.command.rest;
 
 import lombok.RequiredArgsConstructor;
 import net.its.estore.orders.command.CreateOrderCommand;
-import net.its.estore.orders.command.OrderStatus;
+import net.its.estore.orders.core.model.OrderStatus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,7 +1,7 @@
 package net.its.estore.orders.core.event;
 
 import lombok.Data;
-import net.its.estore.orders.command.OrderStatus;
+import net.its.estore.orders.core.model.OrderStatus;
 
 @Data
 public class OrderCreatedEvent {

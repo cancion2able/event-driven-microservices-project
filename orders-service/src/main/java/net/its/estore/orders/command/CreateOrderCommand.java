@@ -2,6 +2,7 @@ package net.its.estore.orders.command;
 
 import lombok.Builder;
 import lombok.Data;
+import net.its.estore.orders.core.model.OrderStatus;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data

@@ -1,4 +1,4 @@
-package net.its.estore.orders.command;
+package net.its.estore.orders.query;
 
 import lombok.RequiredArgsConstructor;
 import net.its.estore.orders.core.data.OrderEntity;

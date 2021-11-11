@@ -2,6 +2,7 @@ package net.its.estore.orders.command;
 
 import lombok.NoArgsConstructor;
 import net.its.estore.orders.core.event.OrderCreatedEvent;
+import net.its.estore.orders.core.model.OrderStatus;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;

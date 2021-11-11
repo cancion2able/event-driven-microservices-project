@@ -1,7 +1,7 @@
 package net.its.estore.orders.core.data;
 
 import lombok.Data;
-import net.its.estore.orders.command.OrderStatus;
+import net.its.estore.orders.core.model.OrderStatus;
 
 import javax.persistence.*;
 
