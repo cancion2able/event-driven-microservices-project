@@ -1,9 +1,8 @@
-package net.its.estore.products.command.rest;
+package net.its.estore.products.rest;
 
 import lombok.RequiredArgsConstructor;
 import net.its.estore.products.command.CreateProductCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

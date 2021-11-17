@@ -1,4 +1,4 @@
-package net.its.estore.products.command.rest;
+package net.its.estore.products.rest;
 
 import lombok.Data;
 
