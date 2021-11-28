@@ -17,6 +17,5 @@ public class OrderSaga {
     @SagaEventHandler(associationProperty = "orderId")
     public void handle(OrderCreatedEvent event) {
 
-
     }
 }
