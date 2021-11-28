@@ -1,6 +1,7 @@
 package net.its.estore.products.command;
 
 import lombok.NoArgsConstructor;
+import net.its.estore.core.command.ReserveProductCommand;
 import net.its.estore.products.core.event.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -33,6 +34,13 @@ public class ProductAggregate {
         final ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent();
         BeanUtils.copyProperties(createProductCommand, productCreatedEvent);
         AggregateLifecycle.apply(productCreatedEvent);
+    }
+
+    @CommandHandler
+    public ProductAggregate(ReserveProductCommand reserveProductCommand) {
+        if (this.quantity < reserveProductCommand.getQuantity()) {
+            throw new IllegalArgumentException("Insufficient number of items in stock!");
+        }
     }
 
     @EventSourcingHandler
