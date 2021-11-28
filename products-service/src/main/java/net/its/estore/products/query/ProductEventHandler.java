@@ -1,6 +1,7 @@
 package net.its.estore.products.query;
 
 import lombok.RequiredArgsConstructor;
+import net.its.estore.core.event.ProductReservedEvent;
 import net.its.estore.products.core.data.ProductEntity;
 import net.its.estore.products.core.data.ProductRepository;
 import net.its.estore.products.core.event.ProductCreatedEvent;
@@ -17,7 +18,7 @@ public class ProductEventHandler {
 
     private final ProductRepository repository;
 
-    @ExceptionHandler(resultType = Exception.class)
+    @ExceptionHandler
     public void handle(Exception exception) throws Exception {
         throw exception;
     }
@@ -36,5 +37,12 @@ public class ProductEventHandler {
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
         }
+    }
+
+    @EventHandler
+    public void on(ProductReservedEvent event) {
+        final ProductEntity product = repository.findByProductId(event.getProductId());
+        product.setQuantity(product.getQuantity() - event.getQuantity());
+        repository.save(product);
     }
 }
