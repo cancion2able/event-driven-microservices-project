@@ -2,6 +2,7 @@ package net.its.estore.orders.saga;
 
 import lombok.RequiredArgsConstructor;
 import net.its.estore.core.command.ReserveProductCommand;
+import net.its.estore.core.event.ProductReservedEvent;
 import net.its.estore.orders.core.event.OrderCreatedEvent;
 import org.axonframework.commandhandling.CommandCallback;
 import org.axonframework.commandhandling.CommandMessage;
@@ -31,5 +32,10 @@ public class OrderSaga {
                 // start a compensating transaction
             }
         });
+    }
+
+    @SagaEventHandler(associationProperty = "orderId")
+    public void handle(ProductReservedEvent event) {
+        // process user payment
     }
 }
